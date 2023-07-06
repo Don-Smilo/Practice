@@ -36,10 +36,12 @@ public:
 	UFUNCTION()
 	void MoveRight(float value);
 
-public:
+
 	// FPS camera
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* FPSCameraComponent;
 
-
+	// First person mesh (arms), visible only to player
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+	USkeletalMeshComponent* FPSMesh;
 };

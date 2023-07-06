@@ -22,6 +22,23 @@ APracticeCharacter::APracticeCharacter()
 	//Enable the pawn to control camera rotation
 	FPSCameraComponent->bUsePawnControlRotation = true;
 
+	// Create first person mesh component
+	FPSMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("FirstPersonMesh"));
+	check(FPSMesh != nullptr);
+
+	// Only player sees this mesh
+	FPSMesh->SetOnlyOwnerSee(true);
+
+	// Attach this mesh to FPS camera
+	FPSMesh->SetupAttachment(FPSCameraComponent);
+
+	// Disable enviromental shadows
+	FPSMesh->bCastDynamicShadow = false;
+	FPSMesh->CastShadow = false;
+
+	// Switch off visibility of third person mesh
+	GetMesh()->SetOwnerNoSee(true);
+
 }
 
 // Called when the game starts or when spawned
