@@ -65,6 +65,8 @@ void APracticeCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 	PlayerInputComponent->BindAxis("LookUp", this, &APracticeCharacter::AddControllerPitchInput);
 	PlayerInputComponent->BindAxis("Turn", this, &APracticeCharacter::AddControllerYawInput);
+
+	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &APracticeCharacter::Fire);
 }
 
 void APracticeCharacter::MoveForward(float value)
@@ -77,5 +79,43 @@ void APracticeCharacter::MoveRight(float value)
 {
 	FVector Direction = FRotationMatrix(Controller->GetControlRotation()).GetScaledAxis(EAxis::Y);
 	AddMovementInput(Direction, value);
+}
+
+void APracticeCharacter::Fire()
+{
+	// Attempt to fire a projectile
+	if (ProjectileClass)
+	{
+		// Get the camera location
+		FVector CameraLocation;
+		FRotator CameraRotation;
+		GetActorEyesViewPoint(CameraLocation, CameraRotation);
+
+		// Set MuzzleOffset 
+		MuzzleOffset.Set(100.0f, 0.0f, 0.0f);
+
+		//Transform MuzzleOffset to world space
+		FVector MuzzleLocation = CameraLocation + FTransform(CameraRotation).TransformVector(MuzzleOffset);
+
+		// Skew the aim to be slightly upwards
+		FRotator MuzzleRotation = CameraRotation;
+		MuzzleRotation.Pitch += 10.0f;
+
+		UWorld* World = GetWorld();
+		if (World)
+		{
+			FActorSpawnParameters SpawnParams;
+			SpawnParams.Owner = GetInstigator();
+
+			// S[awn the projectile at the muzzle
+			AFPSProjectile* Projectile = World->SpawnActor<AFPSProjectile>(ProjectileClass, MuzzleLocation, MuzzleRotation, SpawnParams);
+			if (Projectile)
+			{
+				// Set the projectile's initial trajectory
+				FVector LaunchDirection = MuzzleRotation.Vector();
+				Projectile->FireInDirection(LaunchDirection);
+			}
+		}
+	}
 }
 
