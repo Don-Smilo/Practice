@@ -99,7 +99,7 @@ void APracticeCharacter::Fire()
 
 		// Skew the aim to be slightly upwards
 		FRotator MuzzleRotation = CameraRotation;
-		MuzzleRotation.Pitch += 10.0f;
+		MuzzleRotation.Pitch += 2.0f;
 
 		UWorld* World = GetWorld();
 		if (World)
