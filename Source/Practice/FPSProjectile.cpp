@@ -50,19 +50,20 @@ AFPSProjectile::AFPSProjectile()
 			ProjectileMeshComponent->SetStaticMesh(Mesh.Object);
 		}
 
-		static ConstructorHelpers::FObjectFinder<UMaterial>Material(TEXT("'/Game/Models/SphereMaterial.SphereMaterial'"));
-		if (Material.Succeeded())
-		{
-			ProjectileMaterialInstance = UMaterialInstanceDynamic::Create(Material.Object, ProjectileMeshComponent);
-		}
+		//static ConstructorHelpers::FObjectFinder<UMaterial>Material(TEXT("'/Game/Models/SphereMaterial.SphereMaterial'"));
+		//if (Material.Succeeded())
+		//{
+		//	ProjectileMaterialInstance = UMaterialInstanceDynamic::Create(Material.Object, ProjectileMeshComponent);
+		//}
 
-		ProjectileMeshComponent->SetMaterial(0, ProjectileMaterialInstance);
+		//ProjectileMeshComponent->SetMaterial(0, ProjectileMaterialInstance);
 		ProjectileMeshComponent->SetRelativeScale3D(FVector(0.09f, 0.09f, 0.09f));
 		ProjectileMeshComponent->SetupAttachment(RootComponent);
 	}
 
 	// Delete projectile after 3 seconds
 	InitialLifeSpan = 3.0f;
+	Damage = 5.0f;
 }
 
 // Called when the game starts or when spawned
@@ -87,10 +88,11 @@ void AFPSProjectile::FireInDirection(const FVector& ShootDirection)
 
 void AFPSProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
-	if (OtherActor != this && OtherComponent->IsSimulatingPhysics())
-	{
-		OtherComponent->AddImpulseAtLocation(ProjectileMovementComponent->Velocity * 100.0f, Hit.ImpactPoint);
-	}
 	Destroy();
+}
+
+float AFPSProjectile::DealDamage()
+{
+	return this->Damage;
 }
 

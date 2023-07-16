@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/SphereComponent.h"
+#include "HealthComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "FPSProjectile.generated.h"
 
@@ -47,5 +48,13 @@ public:
 	// Calling when projectile hits sjmething
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
+
+	// Projectile damage
+	UPROPERTY(BlueprintReadOnly)
+	float Damage;
+
+	// Returning damage
+	UFUNCTION(BlueprintCallable)
+	float DealDamage();
 
 };
