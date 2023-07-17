@@ -22,7 +22,8 @@ protected:
 
 public:	
 
-	//
+	// Don't remember why i need it, but i won't delete this
+	// Well, it returns true
 	bool IsHealthComponent();
 
 	// Called every frame
@@ -35,7 +36,7 @@ public:
 	void UpdateMaxHealth(float Value);
 
 	UFUNCTION(BlueprintCallable)
-	float GetPecentage();
+	float GetPercentage();
 
 	// Default value 100
 	UPROPERTY(BlueprintReadOnly)
@@ -46,5 +47,5 @@ public:
 	float Health;
 
 	UPROPERTY(BlueprintReadOnly)
-	bool isAlive;
+	bool isAlive = true;
 };

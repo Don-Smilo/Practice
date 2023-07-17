@@ -34,6 +34,7 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 #pragma region Moving
+
 	// Handles input forward/backward
 	UFUNCTION()
 	void MoveForward(float value);
@@ -41,9 +42,11 @@ public:
 	// Handles input left/right
 	UFUNCTION()
 	void MoveRight(float value);
+
 #pragma endregion
 
 #pragma region Firing
+
 	// Handles firing
 	UFUNCTION()
 	void Fire();
@@ -51,12 +54,15 @@ public:
 	// Gun muzzle offset from the camera location
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
 	FVector MuzzleOffset;
+
 #pragma endregion
 
 #pragma region Camera
+
 	// FPS camera
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* FPSCameraComponent;
+
 #pragma endregion
 
 	// First person mesh (arms), visible only to player

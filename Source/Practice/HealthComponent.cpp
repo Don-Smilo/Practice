@@ -38,12 +38,12 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
 }
 
 void UHealthComponent::TakeDamage(float Value)
 {
 	Health -= Value;
+
 	if (Health <= 0)
 	{
 		isAlive = false;
@@ -57,6 +57,7 @@ void UHealthComponent::UpdateMaxHealth(float Value)
 
 	MaxHealth = Value;
 	Health += Diff;
+
 	if (Health < 0)
 	{
 		isAlive = false;
@@ -64,8 +65,7 @@ void UHealthComponent::UpdateMaxHealth(float Value)
 
 }
 
-float UHealthComponent::GetPecentage()
+float UHealthComponent::GetPercentage()
 {
 	return Health / MaxHealth;
 }
-
