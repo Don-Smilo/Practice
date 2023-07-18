@@ -39,6 +39,7 @@ APracticeCharacter::APracticeCharacter()
 	// Switch off visibility of third person mesh
 	GetMesh()->SetOwnerNoSee(true);
 
+	isAlive = true;
 }
 
 // Called when the game starts or when spawned

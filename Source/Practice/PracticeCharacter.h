@@ -69,4 +69,6 @@ public:
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 	USkeletalMeshComponent* FPSMesh;
 
+	UPROPERTY(BlueprintReadWrite)
+	bool isAlive;
 };
