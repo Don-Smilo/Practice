@@ -71,4 +71,10 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 	bool isAlive;
+
+	UFUNCTION(BLueprintCallable)
+	void PlayerDamaged(float Damage);
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlayerDied();
 };

@@ -120,3 +120,9 @@ void APracticeCharacter::Fire()
 	}
 }
 
+void APracticeCharacter::PlayerDamaged(float Damage)
+{
+	isAlive = false;
+	PlayerDied();
+}
+
