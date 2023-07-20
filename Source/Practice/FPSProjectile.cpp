@@ -44,20 +44,20 @@ AFPSProjectile::AFPSProjectile()
 	if (!ProjectileMeshComponent)
 	{
 		ProjectileMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMeshComponent"));
-		static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("'/Game/Models/Sphere.Sphere'"));
-		if (Mesh.Succeeded())
-		{
-			ProjectileMeshComponent->SetStaticMesh(Mesh.Object);
-		}
+	//	static ConstructorHelpers::FObjectFinder<UStaticMesh>Mesh(TEXT("'/Game/Models/Sphere.Sphere'"));
+	//	if (Mesh.Succeeded())
+	//	{
+	//		ProjectileMeshComponent->SetStaticMesh(Mesh.Object);
+	//	}
 
-		//static ConstructorHelpers::FObjectFinder<UMaterial>Material(TEXT("'/Game/Models/SphereMaterial.SphereMaterial'"));
-		//if (Material.Succeeded())
-		//{
-		//	ProjectileMaterialInstance = UMaterialInstanceDynamic::Create(Material.Object, ProjectileMeshComponent);
-		//}
+	//	//static ConstructorHelpers::FObjectFinder<UMaterial>Material(TEXT("'/Game/Models/SphereMaterial.SphereMaterial'"));
+	//	//if (Material.Succeeded())
+	//	//{
+	//	//	ProjectileMaterialInstance = UMaterialInstanceDynamic::Create(Material.Object, ProjectileMeshComponent);
+	//	//}
 
-		//ProjectileMeshComponent->SetMaterial(0, ProjectileMaterialInstance);
-		ProjectileMeshComponent->SetRelativeScale3D(FVector(0.09f, 0.09f, 0.09f));
+	//	//ProjectileMeshComponent->SetMaterial(0, ProjectileMaterialInstance);
+	//	ProjectileMeshComponent->SetRelativeScale3D(FVector(0.09f, 0.09f, 0.09f));
 		ProjectileMeshComponent->SetupAttachment(RootComponent);
 	}
 
