@@ -1,7 +1,16 @@
-# My summer educational practice
-**There are:**
-- moving
-- projectile shooting
-- dealing damage to enemy
-- enemy AI (moves to random points; runs after player and tries to kill it when noticed)
-- widgets (aiming point, FPS counter, main menu, death screen)
+# My summer educational practice project
+A simple first-person game
+
+## Features
+- Player movement
+- Projectile shooting
+- Damage system
+- Basic enemy AI:
+  - Patrols betwee random points
+  - Detects player and chases them
+  - Attacks on contact
+ - UI:
+   - Aiming reticle
+   - FPS counter
+   - Main menu
+   - Death screen
